@@ -62,7 +62,7 @@ def handle_message(event):
                 if row[0] == message:
             # Found the row we were looking for.
                 s1 = row[1]
-	        break
+	            break
 		
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
