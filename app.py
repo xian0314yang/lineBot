@@ -65,7 +65,11 @@ def handle_message(event):
             match = re.match(message,x)
             if match:
                 s1 = x	
-                break				
+                break	
+
+        s2[] = s1
+        s1 = s1[1]		
+		
 				
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
