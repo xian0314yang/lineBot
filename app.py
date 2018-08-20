@@ -54,11 +54,16 @@ def handle_message(event):
         s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))
     else:
 
-        with open('data.csv','rb') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                if row[0] == message:
-				    s1 = row
+        fin = open('data.csv')
+        found = {}
+        for line in fin:
+            str1,id=line.split(',')
+            for w in message:
+                if w in str1:
+                found[w]=found.get(w,0)+1
+				
+                break
+        s1 = found[w]
 		
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
