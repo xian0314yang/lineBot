@@ -27,19 +27,19 @@ line_bot_api = LineBotApi('rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO
 handler = WebhookHandler('7e226c6a83c87905a8def19669b71e25')
 
 def beauty():
-    target_url = 'https://www.nvshens.com/rank/sum/'
+    target_url = 'https://www.jkforum.net/forum-603-1.html'
     rs = requests.session()
     res = rs.get(target_url, verify=False)
     res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')   
     content = ""
-    for index, data in enumerate(soup.select('div.rankli_imgdiv a')):
+    for index, data in enumerate(soup.select('div.c cl a')):
         if index == 20:
             return content       
         title = data.text
         link =  data['href']
         content += '{}\n{}\n'.format(title, link)
-		content2 = target_url+content
+        content2 = target_url+content
     return content2
 
 
