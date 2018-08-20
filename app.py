@@ -33,7 +33,7 @@ def beauty():
     res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')   
     content = ""
-    for index, data in enumerate(soup.select('div.c cl a')):
+    for index, data in enumerate(soup.select('div.c\cl a')):
         if index == 20:
             return content       
         title = data.text
