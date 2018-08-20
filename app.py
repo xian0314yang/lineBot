@@ -60,9 +60,9 @@ def handle_message(event):
             str1,id=line.split(',')
             for w in message:
                 if w in str1:
-                found[w]=found.get(w,0)+1
+                    found[w]=found.get(w,0)+1
 				
-                break
+                    break
         s1 = found[w]
 		
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
