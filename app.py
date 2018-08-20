@@ -62,12 +62,13 @@ def handle_message(event):
 
         lines = [line.strip() for line in open('data.csv')]
         for x in lines:
-            match = re.match(message,x)
+            match = re.search(message,x)
             if match:
                 s1 = x	
+				s1 = s1.split(',')[1]
                 break	
-
-        s1 = s1.split(',')[1]    	
+            else:
+			    s1 = '我好笨，不懂你在說什麼'   	
 		
 				
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
