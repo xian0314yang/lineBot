@@ -49,7 +49,7 @@ def handle_message(event):
 #	result = re.match('message','csv
 	
 	s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(10))
-	line_bot_api.reply_message(s1)
+	line_bot_api.reply_message(event.reply_token, s1)
 	
 #    line_bot_api.reply_message(event.reply_token, message)
 
