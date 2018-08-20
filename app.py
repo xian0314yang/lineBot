@@ -9,10 +9,6 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-#import csv
-#import re
-#import random, string
-
 app = Flask(__name__)
 
 # Channel Access Token
@@ -42,17 +38,9 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
 	
-#	f = open('data.csv', 'r')
-#		for row in csv.reader(f):
-#			respon = row
-#	f.close()
-#	result = re.match('message','csv
-
-	line_bot_api.reply_message(event.reply_token, message)
-	
-#    line_bot_api.reply_message(event.reply_token, message)
+    line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 8888))
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
