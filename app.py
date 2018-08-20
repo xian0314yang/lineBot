@@ -11,6 +11,7 @@ from linebot.models import *
 
 import os
 import sys
+import random, string
 app = Flask(__name__)
 
 # Channel Access Token
@@ -41,14 +42,17 @@ def handle_message(event):
 
     #line_bot_api.reply_message(event.reply_token, message)
 	
-    message = event.message.text
-    if 'Hello' in message:
-        reply_message = 'World'
-    elif '您好' in message:
-        reply_message = '嗨'
-    else:
-        reply_message = '幹你娘'
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+#    message = event.message.text
+#    if 'Hello' in message:
+#        reply_message = 'World'
+#    elif '您好' in message:
+#        reply_message = '嗨'
+#    else:
+#        reply_message = '幹你娘'
+		
+    s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(10))	
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
+#    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
     #line_bot_api.reply_message(event.reply_token, message)
 
 #import os
