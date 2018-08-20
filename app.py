@@ -37,7 +37,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-	s1 = ("幹你娘")
+	s1 = ("fuck you")
 	line_bot_api.reply_message(event.reply_token, s1)
     #line_bot_api.reply_message(event.reply_token, message)
 
