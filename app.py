@@ -9,6 +9,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+import os
+import sys
 app = Flask(__name__)
 
 # Channel Access Token
@@ -40,14 +42,14 @@ def handle_message(event):
     #line_bot_api.reply_message(event.reply_token, message)
 	
 	message = event.message.text
-    if "Hello" in message:
-        reply_message = "World"
-    elif "您好" in message:
-        reply_message = "嗨"
+    if 'Hello' in message:
+        reply_message = 'World'
+    elif '您好' in message:
+        reply_message = '嗨'
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
 
 
-import os
+#import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
