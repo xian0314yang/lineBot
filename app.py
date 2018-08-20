@@ -26,14 +26,14 @@ line_bot_api = LineBotApi('rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO
 # Channel Secret
 handler = WebhookHandler('7e226c6a83c87905a8def19669b71e25')
 
-def movie():
-    target_url = 'https://movies.yahoo.com.tw/'
+def beauty():
+    target_url = 'https://www.jkforum.net/forum-603-1.html'
     rs = requests.session()
     res = rs.get(target_url, verify=False)
     res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')   
     content = ""
-    for index, data in enumerate(soup.select('div._slickcontent a')):
+    for index, data in enumerate(soup.select('div.c cl a')):
         if index == 20:
             return content       
         title = data.text
@@ -80,8 +80,8 @@ def handle_message(event):
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 			
     elif 'roll' in message:
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 
-    elif '最新電影' in message:
-        s1 = movie()	
+    elif '美女圖' in message:
+        s2 = beauty()	
     else:
 
         lines = [line.strip() for line in open('data.csv')]
