@@ -46,7 +46,7 @@ def handle_message(event):
         message = 'World'
     elif ('您好' in message):
         message = '嗨'
-    else
+    else:
         message = '幹你娘'
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
     line_bot_api.reply_message(event.reply_token, message)
