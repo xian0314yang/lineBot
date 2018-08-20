@@ -65,10 +65,10 @@ def handle_message(event):
             match = re.search(message,x)
             if match:
                 s1 = x	
-				s1 = s1.split(',')[1]
+                s1 = s1.split(',')[1]
                 break	
             else:
-			    s1 = '我好笨，不懂你在說什麼'   	
+                s1 = '我好笨，不懂你在說什麼'   	
 		
 				
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
