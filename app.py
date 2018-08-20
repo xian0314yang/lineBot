@@ -54,11 +54,15 @@ def handle_message(event):
         s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))
     else:
 
-        lines = [line.strip() for line in open('data.csv')]
-        for y in lines:
-            match=re.match(y,message)
-            if match: 
-                s1 = y
+    with open("data.csv", "r") as file:
+    # Read file as a CSV delimited by tabs.
+        reader = csv.reader(file, delimiter='\t')
+        for row in reader:
+        # Check the first (0-th) column.
+            if row[0] == message:
+            # Found the row we were looking for.
+                s1 = row[1]
+		break
 		
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
