@@ -26,6 +26,23 @@ line_bot_api = LineBotApi('rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO
 # Channel Secret
 handler = WebhookHandler('7e226c6a83c87905a8def19669b71e25')
 
+def movie():
+    target_url = 'https://movies.yahoo.com.tw/'
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    soup = BeautifulSoup(res.text, 'html.parser')   
+    content = ""
+    for index, data in enumerate(soup.select('div.movielist_info h1 a')):
+        if index == 20:
+            return content       
+        title = data.text
+        link =  data['href']
+        content += '{}\n{}\n'.format(title, link)
+    return content
+
+
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 
@@ -42,20 +59,7 @@ def callback():
         abort(400)
     return 'OK'
 
-def movie():
-    target_url = 'https://movies.yahoo.com.tw/'
-    rs = requests.session()
-    res = rs.get(target_url, verify=False)
-    res.encoding = 'utf-8'
-    soup = BeautifulSoup(res.text, 'html.parser')   
-    content = ""
-    for index, data in enumerate(soup.select('div.movielist_info h1 a')):
-        if index == 20:
-            return content       
-        title = data.text
-        link =  data['href']
-        content += '{}\n{}\n'.format(title, link)
-    return content
+
 	
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
