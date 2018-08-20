@@ -47,12 +47,16 @@ def handle_message(event):
     #line_bot_api.reply_message(event.reply_token, message)
 	
     message = event.message.text
-    if 'code' or 'Code' in message:
+    if 'code' in message:
 	#random letter and number (secret code generator)	
         s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))
+    elif 'Code' in message:
+        s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))		
     elif '密碼' in message:
         s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))
-    elif 'roll' or 'Roll' in message:
+    elif 'Roll' in message:
+        s1 = ''.join(random.choice(string.digits) for x in range(3)) 			
+    elif 'roll' in message:
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 	
     else:
 
