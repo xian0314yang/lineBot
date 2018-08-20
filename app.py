@@ -67,7 +67,7 @@ def handle_message(event):
                 s1 = x	
                 break	
 
-        s1 = s1.split(',', 1 )     	
+        s1 = s1.split(',')[1]    	
 		
 				
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
