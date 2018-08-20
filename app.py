@@ -56,9 +56,9 @@ def handle_message(event):
 
         lines = [line.strip() for line in open('data.csv')]
         for x in lines:
-            match=re.search(message,x)
+            match=re.match(message,x)
             if match: 
-                s1 = x
+                s1 = x[1]
 		
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
