@@ -81,7 +81,7 @@ def handle_message(event):
     elif 'roll' in message:
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 
     elif '美女圖' in message:
-        s2 = beauty()	
+        s1 = beauty()	
     else:
 
         lines = [line.strip() for line in open('data.csv')]
