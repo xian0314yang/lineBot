@@ -14,6 +14,9 @@ import sys
 import csv
 import random, string
 import re
+import requests 
+from bs4 import BeautifulSoup
+from urllib.request import urlretrieve
 
 #import pandas as pd
 app = Flask(__name__)
@@ -39,6 +42,21 @@ def callback():
         abort(400)
     return 'OK'
 
+def movie():
+    target_url = 'https://movies.yahoo.com.tw/'
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    soup = BeautifulSoup(res.text, 'html.parser')   
+    content = ""
+    for index, data in enumerate(soup.select('div.movielist_info h1 a')):
+        if index == 20:
+            return content       
+        title = data.text
+        link =  data['href']
+        content += '{}\n{}\n'.format(title, link)
+    return content
+	
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -57,7 +75,9 @@ def handle_message(event):
     elif 'Roll' in message:
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 			
     elif 'roll' in message:
-        s1 = ''.join(random.choice(string.digits) for x in range(3)) 	
+        s1 = ''.join(random.choice(string.digits) for x in range(3)) 
+    elif '最新電影' in message:
+        s1 = movie()	
     else:
 
         lines = [line.strip() for line in open('data.csv')]
@@ -67,10 +87,8 @@ def handle_message(event):
                 s1 = x	
                 s1 = s1.split(',')[1]
                 break	
-            else:
-                s1 = '我好笨，不懂你在說什麼'   	
 		
-				
+
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
     #line_bot_api.reply_message(event.reply_token, message)
