@@ -37,19 +37,19 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text=event.message.text)
+    #message = TextSendMessage(text=event.message.text)
 
     #line_bot_api.reply_message(event.reply_token, message)
 	
-	#message = event.message.text
+    message = event.message.text
     if 'Hello' in message:
-        message = 'World'
+        reply_message = 'World'
     elif '您好' in message:
-        message = '嗨'
+        reply_message = '嗨'
     else:
-        message = '幹你娘'
-#    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-    line_bot_api.reply_message(event.reply_token, message)
+        reply_message = '幹你娘'
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+    #line_bot_api.reply_message(event.reply_token, message)
 
 #import os
 if __name__ == "__main__":
