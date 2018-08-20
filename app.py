@@ -9,9 +9,9 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-#import csv
+import csv
 #import re
-import random, string
+#import random, string
 
 app = Flask(__name__)
 
@@ -42,14 +42,13 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
 	
-#	f = open('database.csv', 'r')
-#		for row in csv.reader(f):
-#			respon = row
-#	f.close()
+	f = open('data.csv', 'r')
+		for row in csv.reader(f):
+			respon = row
+	f.close()
 #	result = re.match('message','csv
-	
-	s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(10))
-	line_bot_api.reply_message(event.reply_token, s1)
+
+	line_bot_api.reply_message(event.reply_token, respon)
 	
 #    line_bot_api.reply_message(event.reply_token, message)
 
