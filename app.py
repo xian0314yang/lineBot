@@ -60,7 +60,7 @@ def handle_message(event):
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 	
     else:
 
-        csv_file = csv.reader(open('test.csv', "rb"), delimiter=",")
+        csv_file = csv.reader(open('data.csv', "rb"), delimiter=",")
 
 
 #loop through csv list
