@@ -26,23 +26,6 @@ line_bot_api = LineBotApi('rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO
 # Channel Secret
 handler = WebhookHandler('7e226c6a83c87905a8def19669b71e25')
 
-def beauty():
-    target_url = 'https://www.gamer.com.tw/'
-    rs = requests.session()
-    res = rs.get(target_url, verify=False)
-    res.encoding = 'utf-8'
-    soup = BeautifulSoup(res.text, 'html.parser')   
-    content = ""
-    for index, data in enumerate(soup.select('div.BA-cbox BA-cbox7 a')):
-        if index == 20:
-            return content       
-        title = data.text
-        link =  data['href']
-        content += '{}\n{}\n'.format(title, link)
-        content2 = target_url+content
-    return content2
-
-
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -59,7 +42,6 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return 'OK'
-
 
 	
 # 處理訊息
@@ -81,8 +63,6 @@ def handle_message(event):
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 			
     elif 'roll' in message:
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 
-    elif '美女圖' in message:
-        s1 = beauty()	
     else:
 
         lines = [line.strip() for line in open('data.csv')]
