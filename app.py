@@ -60,14 +60,12 @@ def handle_message(event):
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 	
     else:
 
-        csv_file = csv.reader(open('data.csv', "rb"), delimiter=",")
-
-
-#loop through csv list
-        for row in csv_file:
-    #if current rows 2nd value is equal to input, print that row
-            if row[1] == message:
-                s1 = row        		
+        lines = [line.strip() for line in open('data.csv')]
+        for x in lines:
+            match = re.match(message,x)
+            if match:
+                s1 = x	
+                break				
 				
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
