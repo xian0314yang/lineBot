@@ -48,7 +48,7 @@ def handle_message(event):
 #	f.close()
 #	result = re.match('message','csv
 
-	line_bot_api.reply_message(event.reply_token, "幹你娘")
+	line_bot_api.reply_message(event.reply_token, message)
 	
 #    line_bot_api.reply_message(event.reply_token, message)
 
