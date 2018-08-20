@@ -60,7 +60,7 @@ def handle_message(event):
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 	
     else:
 
-        lines = [line.strip() for line in open(u'data.csv')]
+        lines = [line.strip() for line in open('data.csv')]
         for x in lines:
             match = re.match(message,x)
             if match:
