@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, request, abort
 
 from linebot import (
@@ -8,6 +9,10 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+#import csv
+#import re
+import random, string
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -17,6 +22,8 @@ handler = WebhookHandler('7e226c6a83c87905a8def19669b71e25')
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
+
+
 def callback():
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
@@ -34,7 +41,17 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token, message)
+	
+#	f = open('database.csv', 'r')
+#		for row in csv.reader(f):
+#			respon = row
+#	f.close()
+#	result = re.match('message','csv
+	
+	s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(10))
+	line_bot_api.reply_message(s1)
+	
+#    line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
