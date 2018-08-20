@@ -39,7 +39,8 @@ def beauty():
         title = data.text
         link =  data['href']
         content += '{}\n{}\n'.format(title, link)
-    return content
+		content2 = target_url+content
+    return content2
 
 
 
