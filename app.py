@@ -47,21 +47,24 @@ def handle_message(event):
     #line_bot_api.reply_message(event.reply_token, message)
 	
     message = event.message.text
-    if 'code' in message:
+    if 'code' or 'Code' in message:
 	#random letter and number (secret code generator)	
         s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))
     elif '密碼' in message:
         s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))
-    elif 'roll' in message:
+    elif 'roll' or 'Roll' in message:
         s1 = ''.join(random.choice(string.digits) for x in range(3)) 	
     else:
 
-        with open("data.csv", "r") as f:
-            reader = csv.reader(f)
-            for content in enumerate(reader):
-                if content[0] == message:
-                    s1 = content            
-		
+        csv_file = csv.reader(open('test.csv', "rb"), delimiter=",")
+
+
+#loop through csv list
+        for row in csv_file:
+    #if current rows 2nd value is equal to input, print that row
+            if row[1] == message:
+                s1 = row        		
+				
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=s1))
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
     #line_bot_api.reply_message(event.reply_token, message)
