@@ -13,6 +13,7 @@ import os
 import sys
 import csv
 import random, string
+import pandas as pd
 app = Flask(__name__)
 
 # Channel Access Token
@@ -54,16 +55,16 @@ def handle_message(event):
 #random letter and number (secret code generator)		
 #    s1 = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(10))
 
-    filename = './data.csv'
-  
-    duration_list = []
-    with open(filename) as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            duration_list.append(row['duration'])
+    csv_data = pd.read_csv('data.csv') # 讀取訓練資料 
+    #print(csv_data.shape) # (189, 9) 
+    N = 5 
+    csv_batch_data = csv_data.tail(N) # 取後5條資料 
+    #print(csv_batch_data.shape) # (5, 9) 
+    train_batch_data = csv_batch_data[list(range(3, 6))] # 取這20條資料的3到5列值(索引從0開始) 
+    #print(train_batch_data)
 		
 		
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=duration_list))
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=train_batch_data))
 #    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
     #line_bot_api.reply_message(event.reply_token, message)
 
