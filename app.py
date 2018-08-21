@@ -293,6 +293,7 @@ def panx():
 def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
+    message = event.message.text
     if event.message.text == "eyny":
         content = eyny_movie()
         line_bot_api.reply_message(
@@ -518,7 +519,7 @@ def handle_message(event):
     	
     lines = [line.strip() for line in open('data.csv')]
     for x in lines:
-    message = event.message.text
+    
         match = re.search(message,x)
         if match:
             message = x	
