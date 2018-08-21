@@ -512,11 +512,11 @@ def handle_message(event):
         buttons_template = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))	
         line_bot_api.reply_message(event.reply_token, buttons_template)	
     if event.message.text == "Roll":
-	    buttons_template = ''.join(random.choice(string.digits) for x in range(3))	
+        buttons_template = ''.join(random.choice(string.digits) for x in range(3))	
         line_bot_api.reply_message(event.reply_token, buttons_template)	
     if event.message.text == "roll":
-	    buttons_template = ''.join(random.choice(string.digits) for x in range(3))	
-        line_bot_api.reply_message(event.reply_token, buttons_template)		
+        buttons_template = ''.join(random.choice(string.digits) for x in range(3))	
+        line_bot_api.reply_message(event.reply_token, buttons_template)			
 	
 	lines = [line.strip() for line in open('data.csv')]
     for x in lines:
