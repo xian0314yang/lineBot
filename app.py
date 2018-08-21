@@ -291,8 +291,8 @@ def panx():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    print("event.reply_token:", event.reply_token)
-    print("event.message.text:", event.message.text)
+#    print("event.reply_token:", event.reply_token)
+#    print("event.message.text:", event.message.text)
     message = event.message.text
     lines = [line.strip() for line in open('data.csv')]
     for x in lines:
