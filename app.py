@@ -23,12 +23,9 @@ app = Flask(__name__)
 #config.read("config.ini")
 line_bot_api = LineBotApi('rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO6wlwqcUgbMoI8emfWhwVGnVTsv6azpsxhLqayllgWuQX+Lto76YwilVGmdi+jWZkidn47Kof7nkNLfVESuc3AS7J1KA+n9imwdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('7e226c6a83c87905a8def19669b71e25')
-
-#line_bot_api = LineBotApi(config['U1880b67cd9c48cc1c4d62ce7482d2f0f']['rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO6wlwqcUgbMoI8emfWhwVGnVTsv6azpsxhLqayllgWuQX+Lto76YwilVGmdi+jWZkidn47Kof7nkNLfVESuc3AS7J1KA+n9imwdB04t89/1O/w1cDnyilFU='])
-#handler = WebhookHandler(config['U1880b67cd9c48cc1c4d62ce7482d2f0f']['7e226c6a83c87905a8def19669b71e25'])
-#client_id = config['imgur_api']['Client_ID']
-#client_secret = config['imgur_api']['Client_Secret']
-#album_id = config['imgur_api']['Album_ID']
+client_id = '546c25a59c58ad7'
+client_secret = '4854413099-0t18fnkqnf8io1b5m45rnpn35jtjn4d3'
+album_id = 'a/F3B1B4a'
 #API_Get_Image = config['other_api']['API_Get_Image']
 
 
@@ -329,7 +326,7 @@ def handle_message(event):
         return 0
     if event.message.text == "隨便來張正妹圖片":
         image = requests.get(API_Get_Image)
-        url = image.json().get('Url')
+        url = image.json().get('https://imgur.com/a/F3B1B4a')
         image_message = ImageSendMessage(
             original_content_url=url,
             preview_image_url=url
@@ -385,7 +382,7 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='選擇服務',
                 text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
+                thumbnail_image_url='https://i.imgur.com/w4nNxP4.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='新聞',
@@ -414,7 +411,7 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='新聞類型',
                 text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/vkqbLnz.png',
+                thumbnail_image_url='https://i.imgur.com/uWk2Ej9.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='蘋果即時新聞',
@@ -439,7 +436,7 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='服務類型',
                 text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/sbOTJt4.png',
+                thumbnail_image_url='https://i.imgur.com/RAti3Ud.png',
                 actions=[
                     MessageTemplateAction(
                         label='近期上映電影',
@@ -464,7 +461,7 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='你媽知道你在看廢文嗎',
                 text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/ocmxAdS.jpg',
+                thumbnail_image_url='https://i.imgur.com/fmqULgp.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='近期熱門廢文',
@@ -485,7 +482,7 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='選擇服務',
                 text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/qKkE2bj.jpg',
+                thumbnail_image_url='https://i.imgur.com/3djJokr.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='PTT 表特版 近期大於 10 推的文章',
@@ -504,57 +501,48 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    if event.message.text == "Code":
+		
+    if event.message.text == "密碼產生器":
         buttons_template = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))	
         line_bot_api.reply_message(event.reply_token, buttons_template)
-    if event.message.text == "code":
-        buttons_template = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))	
-        line_bot_api.reply_message(event.reply_token, buttons_template)	
-    if event.message.text == "密碼":
-        buttons_template = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))	
-        line_bot_api.reply_message(event.reply_token, buttons_template)	
-    if event.message.text == "Roll":
+		return 0
+
+    if event.message.text == "000~999隨機數字":
         buttons_template = ''.join(random.choice(string.digits) for x in range(3))	
         line_bot_api.reply_message(event.reply_token, buttons_template)	
-    if event.message.text == "roll":
-        buttons_template = ''.join(random.choice(string.digits) for x in range(3))	
-        line_bot_api.reply_message(event.reply_token, buttons_template)			
-	
-#    lines = [line.strip() for line in open('data.csv')]
-#    for x in lines:
-#        match = re.search(message,x)
-#        if match:
-#            buttons_template = x	
-#            buttons_template = buttons_template.split(',')[1]
-#            line_bot_api.reply_message(event.reply_token, buttons_template)	
-#            break
-			
-    buttons_template = TemplateSendMessage(
-        alt_text='目錄 template',
-        template=ButtonsTemplate(
-            title='選擇服務',
-            text='請選擇',
-            thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
-            actions=[
-                MessageTemplateAction(
-                    label='開始玩',
-                    text='開始玩'
-                ),
-                URITemplateAction(
-                    label='影片介紹 阿肥bot',
-                    uri='https://youtu.be/1IxtWgWxtlE'
-                ),
-                URITemplateAction(
-                    label='如何建立自己的 Line Bot',
-                    uri='https://github.com/twtrubiks/line-bot-tutorial'
-                ),
-                URITemplateAction(
-                    label='聯絡作者',
-                    uri='https://www.facebook.com/TWTRubiks?ref=bookmarks'
+        return 0
+		
+    lines = [line.strip() for line in open('data.csv')]
+    for x in lines:
+        match = re.search(message,x)
+        if match:
+            buttons_template = x	
+            buttons_template = buttons_template.split(',')[1]
+            line_bot_api.reply_message(event.reply_token, buttons_template)	
+            break
+        else:			
+            buttons_template = TemplateSendMessage(
+                alt_text='目錄 template',
+                template=ButtonsTemplate(
+                    title='選擇服務',
+                    text='請選擇',
+                    thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
+                    actions=[
+                        MessageTemplateAction(
+                            label='開始玩',
+                            text='開始玩'
+                        ),
+                        MessageTemplateAction(	
+                            label='密碼產生器',
+                            text='密碼產生器'
+                        ),
+                        MessageTemplateAction(	
+                            label='000~999隨機數字'
+                            text='000~999隨機數字'
+                        )
+                    ]
                 )
-            ]
-        )
-    )
+            )
     line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
