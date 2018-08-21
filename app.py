@@ -515,9 +515,10 @@ def handle_message(event):
             TextSendMessage(text=message))	
         return 0
 	
-    message = event.message.text	
+    	
     lines = [line.strip() for line in open('data.csv')]
     for x in lines:
+    message = event.message.text
         match = re.search(message,x)
         if match:
             message = x	
