@@ -518,7 +518,7 @@ def handle_message(event):
         buttons_template = ''.join(random.choice(string.digits) for x in range(3))	
         line_bot_api.reply_message(event.reply_token, buttons_template)			
 	
-	lines = [line.strip() for line in open('data.csv')]
+    lines = [line.strip() for line in open('data.csv')]
     for x in lines:
         match = re.search(message,x)
         if match:
