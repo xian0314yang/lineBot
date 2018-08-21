@@ -537,7 +537,7 @@ def handle_message(event):
                             text='密碼產生器'
                         ),
                         MessageTemplateAction(	
-                            label='000~999隨機數字'
+                            label='000~999隨機數字',
                             text='000~999隨機數字'
                         )
                     ]
