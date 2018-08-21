@@ -505,12 +505,12 @@ def handle_message(event):
     if event.message.text == "密碼產生器":
         buttons_template = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))	
         line_bot_api.reply_message(event.reply_token, buttons_template)
-#		return 0
+        return 0
 
     if event.message.text == "000~999隨機數字":
         buttons_template = ''.join(random.choice(string.digits) for x in range(3))	
         line_bot_api.reply_message(event.reply_token, buttons_template)	
-#        return 0
+        return 0
 		
     lines = [line.strip() for line in open('data.csv')]
     for x in lines:
