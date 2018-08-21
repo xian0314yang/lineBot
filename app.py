@@ -1,7 +1,7 @@
 import requests
 import re
 import random
-import configparser
+#import configparser
 from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 from imgurpython import ImgurClient
@@ -11,7 +11,7 @@ import csv
 import random, string
 
 from linebot import (
-    LineBotApi, WebhookHandler
+    LineBotApi, WebhookParser
 )
 from linebot.exceptions import (
     InvalidSignatureError
