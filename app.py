@@ -19,15 +19,17 @@ from linebot.exceptions import (
 from linebot.models import *
 
 app = Flask(__name__)
-config = configparser.ConfigParser()
-config.read("config.ini")
+#config = configparser.ConfigParser()
+#config.read("config.ini")
+line_bot_api = LineBotApi('rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO6wlwqcUgbMoI8emfWhwVGnVTsv6azpsxhLqayllgWuQX+Lto76YwilVGmdi+jWZkidn47Kof7nkNLfVESuc3AS7J1KA+n9imwdB04t89/1O/w1cDnyilFU=')
+parser = WebhookParser('7e226c6a83c87905a8def19669b71e25')
 
-line_bot_api = LineBotApi(config['U1880b67cd9c48cc1c4d62ce7482d2f0f']['rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO6wlwqcUgbMoI8emfWhwVGnVTsv6azpsxhLqayllgWuQX+Lto76YwilVGmdi+jWZkidn47Kof7nkNLfVESuc3AS7J1KA+n9imwdB04t89/1O/w1cDnyilFU='])
-handler = WebhookHandler(config['U1880b67cd9c48cc1c4d62ce7482d2f0f']['7e226c6a83c87905a8def19669b71e25'])
-client_id = config['imgur_api']['Client_ID']
-client_secret = config['imgur_api']['Client_Secret']
-album_id = config['imgur_api']['Album_ID']
-API_Get_Image = config['other_api']['API_Get_Image']
+#line_bot_api = LineBotApi(config['U1880b67cd9c48cc1c4d62ce7482d2f0f']['rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO6wlwqcUgbMoI8emfWhwVGnVTsv6azpsxhLqayllgWuQX+Lto76YwilVGmdi+jWZkidn47Kof7nkNLfVESuc3AS7J1KA+n9imwdB04t89/1O/w1cDnyilFU='])
+#handler = WebhookHandler(config['U1880b67cd9c48cc1c4d62ce7482d2f0f']['7e226c6a83c87905a8def19669b71e25'])
+#client_id = config['imgur_api']['Client_ID']
+#client_secret = config['imgur_api']['Client_Secret']
+#album_id = config['imgur_api']['Album_ID']
+#API_Get_Image = config['other_api']['API_Get_Image']
 
 
 @app.route("/callback", methods=['POST'])
