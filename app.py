@@ -1,7 +1,6 @@
 import requests
 import re
 import random
-#import configparser
 from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 from imgurpython import ImgurClient
@@ -23,9 +22,9 @@ app = Flask(__name__)
 #config.read("config.ini")
 line_bot_api = LineBotApi('rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO6wlwqcUgbMoI8emfWhwVGnVTsv6azpsxhLqayllgWuQX+Lto76YwilVGmdi+jWZkidn47Kof7nkNLfVESuc3AS7J1KA+n9imwdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('7e226c6a83c87905a8def19669b71e25')
-client_id = '546c25a59c58ad7'
-client_secret = '4854413099-0t18fnkqnf8io1b5m45rnpn35jtjn4d3'
-album_id = 'a/F3B1B4a'
+#client_id = '546c25a59c58ad7'
+#client_secret = '4854413099-0t18fnkqnf8io1b5m45rnpn35jtjn4d3'
+#album_id = 'a/F3B1B4a'
 #API_Get_Image = config['other_api']['API_Get_Image']
 
 
@@ -312,28 +311,28 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
-    if event.message.text == "來張 imgur 正妹圖片":
-        client = ImgurClient(client_id, client_secret)
-        images = client.get_album_images(album_id)
-        index = random.randint(0, len(images) - 1)
-        url = images[index].link
-        image_message = ImageSendMessage(
-            original_content_url=url,
-            preview_image_url=url
-        )
-        line_bot_api.reply_message(
-            event.reply_token, image_message)
-        return 0
-    if event.message.text == "隨便來張正妹圖片":
-        image = requests.get(API_Get_Image)
-        url = image.json().get('https://imgur.com/a/F3B1B4a')
-        image_message = ImageSendMessage(
-            original_content_url=url,
-            preview_image_url=url
-        )
-        line_bot_api.reply_message(
-            event.reply_token, image_message)
-        return 0
+#    if event.message.text == "來張 imgur 正妹圖片":
+#        client = ImgurClient(client_id, client_secret)
+#        images = client.get_album_images(album_id)
+#        index = random.randint(0, len(images) - 1)
+#        url = images[index].link
+#        image_message = ImageSendMessage(
+#            original_content_url=url,
+#            preview_image_url=url
+#        )
+#        line_bot_api.reply_message(
+#            event.reply_token, image_message)
+#        return 0
+#    if event.message.text == "隨便來張正妹圖片":
+#        image = requests.get(API_Get_Image)
+#        url = image.json().get('https://imgur.com/a/F3B1B4a')
+#        image_message = ImageSendMessage(
+#            original_content_url=url,
+#            preview_image_url=url
+#        )
+#        line_bot_api.reply_message(
+#            event.reply_token, image_message)
+#        return 0""
     if event.message.text == "近期熱門廢文":
         content = ptt_hot()
         line_bot_api.reply_message(
@@ -487,15 +486,15 @@ def handle_message(event):
                     MessageTemplateAction(
                         label='PTT 表特版 近期大於 10 推的文章',
                         text='PTT 表特版 近期大於 10 推的文章'
-                    ),
-                    MessageTemplateAction(
-                        label='來張 imgur 正妹圖片',
-                        text='來張 imgur 正妹圖片'
-                    ),
-                    MessageTemplateAction(
-                        label='隨便來張正妹圖片',
-                        text='隨便來張正妹圖片'
                     )
+#                    MessageTemplateAction(
+#                        label='來張 imgur 正妹圖片',
+#                        text='來張 imgur 正妹圖片'
+#                    ),
+#                    MessageTemplateAction(
+#                        label='隨便來張正妹圖片',
+#                        text='隨便來張正妹圖片'
+#                    )
                 ]
             )
         )
@@ -527,7 +526,7 @@ def handle_message(event):
                 template=ButtonsTemplate(
                     title='選擇服務',
                     text='請選擇',
-                    thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
+                    thumbnail_image_url='https://i.imgur.com/GtxseZz.jpg',
                     actions=[
                         MessageTemplateAction(
                             label='開始玩',
@@ -544,7 +543,8 @@ def handle_message(event):
                     ]
                 )
             )
-    line_bot_api.reply_message(event.reply_token, buttons_template)
+			
+        line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 @handler.add(MessageEvent, message=StickerMessage)
