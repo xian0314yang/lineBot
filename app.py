@@ -526,7 +526,7 @@ def handle_message(event):
                 TextSendMessage(text=message))	
             return 0
 
-        elif event.message.text == 'play':			
+        elif event.message.text == 'Help':			
             buttons_template = TemplateSendMessage(
                 alt_text='目錄 template',
                 template=ButtonsTemplate(
