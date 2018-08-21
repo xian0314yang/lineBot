@@ -502,13 +502,13 @@ def handle_message(event):
         return 0
 		
     if event.message.text == "密碼產生器":
-        buttons_template = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))	
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+        message = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))	
+        line_bot_api.reply_message(event.reply_token, message)
         return 0
 
     if event.message.text == "000~999隨機數字":
-        buttons_template = ''.join(random.choice(string.digits) for x in range(3))	
-        line_bot_api.reply_message(event.reply_token, buttons_template)	
+        message = ''.join(random.choice(string.digits) for x in range(3))	
+        line_bot_api.reply_message(event.reply_token, message)	
         return 0
 	
     message = event.message.text	
@@ -516,9 +516,9 @@ def handle_message(event):
     for x in lines:
         match = re.search(message,x)
         if match:
-            buttons_template = x	
-            buttons_template = buttons_template.split(',')[1]
-            line_bot_api.reply_message(event.reply_token, buttons_template)	
+            message = x	
+            message = message.split(',')[1]
+            line_bot_api.reply_message(event.reply_token, message)	
             break
         else:			
             buttons_template = TemplateSendMessage(
@@ -544,7 +544,7 @@ def handle_message(event):
                 )
             )
 			
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+            line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 @handler.add(MessageEvent, message=StickerMessage)
