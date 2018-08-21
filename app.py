@@ -11,7 +11,7 @@ import csv
 import random, string
 
 from linebot import (
-    LineBotApi, WebhookParser
+    LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
     InvalidSignatureError
@@ -22,7 +22,7 @@ app = Flask(__name__)
 #config = configparser.ConfigParser()
 #config.read("config.ini")
 line_bot_api = LineBotApi('rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO6wlwqcUgbMoI8emfWhwVGnVTsv6azpsxhLqayllgWuQX+Lto76YwilVGmdi+jWZkidn47Kof7nkNLfVESuc3AS7J1KA+n9imwdB04t89/1O/w1cDnyilFU=')
-parser = WebhookParser('7e226c6a83c87905a8def19669b71e25')
+handler = WebhookHandler('7e226c6a83c87905a8def19669b71e25')
 
 #line_bot_api = LineBotApi(config['U1880b67cd9c48cc1c4d62ce7482d2f0f']['rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO6wlwqcUgbMoI8emfWhwVGnVTsv6azpsxhLqayllgWuQX+Lto76YwilVGmdi+jWZkidn47Kof7nkNLfVESuc3AS7J1KA+n9imwdB04t89/1O/w1cDnyilFU='])
 #handler = WebhookHandler(config['U1880b67cd9c48cc1c4d62ce7482d2f0f']['7e226c6a83c87905a8def19669b71e25'])
