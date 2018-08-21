@@ -303,7 +303,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=message))	
-            break	
+            #break	
         elif event.message.text == "eyny":
             content = eyny_movie()
             line_bot_api.reply_message(
