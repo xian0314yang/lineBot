@@ -295,7 +295,7 @@ def handle_message(event):
 #    print("event.message.text:", event.message.text)
     message = event.message.text
     # user reply
-    message3 = event.message.text
+#    message3 = event.message.text
     lines = [line.strip() for line in open('data.csv')]
     for x in lines:
         match = re.search(message,x)
@@ -303,7 +303,7 @@ def handle_message(event):
             message = x	
             message = message.split(',')[1]
             #bot reply
-            message2 = message
+#            message2 = message
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=message))	
@@ -555,16 +555,7 @@ def handle_message(event):
             )
 			
             line_bot_api.reply_message(event.reply_token, buttons_template)
-        elif event.message.text == message2:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text='你是在學我說話?'))
-            return 0				
-        elif event.message.text == message3:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text='你在跳針嗎?幹嘛重覆一樣的對話'))				
-            return 0
+
 #        else:
 #            num = random.randint(1,20)
 #            message = ''.join(chr(random.randint(0x4e00, 0x9fa5)) for x in range(num))
