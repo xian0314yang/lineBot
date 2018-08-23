@@ -513,14 +513,14 @@ def handle_message(event):
             return 0
 		
         elif event.message.text == "密碼產生器":
-            message = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(8))	
+            message = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(10))	
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=message))
             return 0
 
-        elif event.message.text == "000~999隨機數字":
-            message = ''.join(random.choice(string.digits) for x in range(3))	
+        elif event.message.text == "0000~9999隨機數字":
+            message = ''.join(random.choice(string.digits) for x in range(4))	
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=message))	
@@ -543,15 +543,22 @@ def handle_message(event):
                             text='密碼產生器'
                         ),
                         MessageTemplateAction(	
-                            label='000~999隨機數字',
-                            text='000~999隨機數字'
+                            label='0000~9999隨機數字',
+                            text='0000~9999隨機數字'
                         )
                     ]
                 )
             )
 			
             line_bot_api.reply_message(event.reply_token, buttons_template)
-
+        
+        else:
+            val = chr(random.randint(0x4e00, 0x9fbf))
+            num = random.choice(string.digits)
+            message = ''.join(val) for x in range(num))	
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=message))				
 
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
