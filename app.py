@@ -555,7 +555,8 @@ def handle_message(event):
         else:
             #val = chr(random.randint(0x4e00, 0x9fbf))
             num = random.randint(1,20)
-            message = ''.join(chr(random.randint(0x4e00, 0x9fbf)) for x in range(num))	
+            #message = ''.join(chr(random.randint(0x4e00, 0x9fa5)) for x in range(num))
+            message = ''.join(chr(random.randint(0x0000, 0xffff)) for x in range(num))			
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=message))				
