@@ -294,16 +294,16 @@ def handle_message(event):
 #    print("event.reply_token:", event.reply_token)
 #    print("event.message.text:", event.message.text)
     message = event.message.text
-	# user reply
-	message3 = event.message.text
-	lines = [line.strip() for line in open('data.csv')]
+    # user reply
+    message3 = event.message.text
+    lines = [line.strip() for line in open('data.csv')]
     for x in lines:
         match = re.search(message,x)
         if match:
             message = x	
             message = message.split(',')[1]
-			#bot reply
-			message2 = message
+            #bot reply
+            message2 = message
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=message))	
