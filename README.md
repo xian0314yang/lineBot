@@ -114,18 +114,6 @@ eyny 電影版包含 Mega 以及 Google 標題的文章
 
 ![alt tag](http://i.imgur.com/N00kvip.png)
 
-#### 來張 imgur 正妹圖片
-
-( 來源 ，自己的  imgur ，透過官方 api  [imgurpython](https://github.com/Imgur/imgurpython) 回傳圖片  )
-
-![alt tag](http://i.imgur.com/dzTvo4z.png)
-
-#### 隨便來張正妹圖片
-
-( 來源 ，爬蟲 [auto_crawler_ptt_beauty_image](https://github.com/twtrubiks/auto_crawler_ptt_beauty_image)  ，從資料庫取出圖片)
-
-![alt tag](http://i.imgur.com/emQRbRb.png)
-
 ***貼圖***
 
 如果傳任意貼圖，則會回傳任意有效貼圖 ( 目前我只有把官方 package_id 為 1 的 sticker_id 放在程式碼裡 )，
@@ -133,10 +121,6 @@ eyny 電影版包含 Mega 以及 Google 標題的文章
 相關的 sticker_id 以及 package_id 可參考官網的 [sticker_list.pdf](https://developers.line.me/media/messaging-api/sticker_list.pdf)。
 
 ![alt tag](https://i.imgur.com/d6yaNBW.jpg)
-
-希望這個 **阿肥bot** 能帶給大家歡樂，程式碼很多基本上就是簡單的爬蟲。
-
-如果需要其他的功能，可以給小弟一點建議，我會盡量完成他。
 
 ## 教學
 
@@ -338,26 +322,9 @@ image_message = ImageSendMessage(
 
 ## Heroku 注意事項
 
-有些人可能會遇到佈署失敗的問題，可以試著將 [runtime.txt](https://github.com/twtrubiks/line-bot-tutorial/blob/master/runtime.txt) 修改為 3.6.4
+有些人可能會遇到佈署失敗的問題，可以試著將 [runtime.txt](https://github.com/twtrubiks/line-bot-tutorial/blob/master/runtime.txt) 修改為 3.6.6
 
 ## 執行環境
 
-* Python 3.6.4
+* Python 3.6.6
 
-## Reference
-
-* [line messaging-api](https://devdocs.line.me/en/#messaging-api)
-* [line-bot-sdk-python](https://github.com/line/line-bot-sdk-python)
-* [imgurpython](https://github.com/Imgur/imgurpython)
-
-## Donation
-
-文章都是我自己研究內化後原創，如果有幫助到您，也想鼓勵我的話，歡迎請我喝一杯咖啡:laughing:
-
-![alt tag](https://i.imgur.com/LRct9xa.png)
-
-[贊助者付款](https://payment.opay.tw/Broadcaster/Donate/9E47FDEF85ABE383A0F5FC6A218606F8)
-
-## License
-
-MIT license
