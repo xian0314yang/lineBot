@@ -20,10 +20,8 @@ from linebot.models import *
 app = Flask(__name__)
 #config = configparser.ConfigParser()
 #config.read("config.ini")
-line_bot_api = LineBotApi('rp98zmyjOxqiY0gXp6rfh24J44UrxZPSz6Mfg+uEtcRRlAXY0NNdO6wlwqcUgbMoI8emfWhwVGnVTsv6azpsxhLqayllgWuQX+Lto76YwilVGmdi+jWZkidn47Kof7nkNLfVESuc3AS7J1KA+n9imwdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('7e226c6a83c87905a8def19669b71e25')
-#client_id = '546c25a59c58ad7'
-#client_secret = '4854413099-0t18fnkqnf8io1b5m45rnpn35jtjn4d3'
+line_bot_api = LineBotApi('your line id issue key')
+handler = WebhookHandler('secret token key')
 #album_id = 'a/F3B1B4a'
 #API_Get_Image = config['other_api']['API_Get_Image']
 
