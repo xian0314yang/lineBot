@@ -425,7 +425,7 @@ def handle_message(event):
                 template=ButtonsTemplate(
                     title='新聞類型',
                     text='請選擇',
-                    thumbnail_image_url='https://i.imgur.com/uWk2Ej9.jpg',
+                    thumbnail_image_url='https://i.imgur.com/PKK3UEk.jpg',
                     actions=[
                         MessageTemplateAction(
                             label='蘋果即時新聞',
@@ -450,7 +450,7 @@ def handle_message(event):
                 template=ButtonsTemplate(
                     title='服務類型',
                     text='請選擇',
-                    thumbnail_image_url='https://i.imgur.com/RAti3Ud.png',
+                    thumbnail_image_url='https://i.imgur.com/TWX4yZa.jpg',
                     actions=[
                         MessageTemplateAction(
                             label='近期上映電影',
@@ -496,7 +496,7 @@ def handle_message(event):
                 template=ButtonsTemplate(
                     title='選擇服務',
                     text='請選擇',
-                    thumbnail_image_url='https://i.imgur.com/3djJokr.jpg',
+                    thumbnail_image_url='https://i.imgur.com/4wcwKD7.jpg',
                     actions=[
                          MessageTemplateAction(
                             label='PTT 表特版 近期大於 10 推的文章',
@@ -536,7 +536,7 @@ def handle_message(event):
                 template=ButtonsTemplate(
                     title='選擇服務',
                     text='請選擇',
-                    thumbnail_image_url='https://i.imgur.com/GtxseZz.jpg',
+                    thumbnail_image_url='https://i.imgur.com/5bUFaOb.png',
                     actions=[
                         MessageTemplateAction(
                             label='開始玩',
